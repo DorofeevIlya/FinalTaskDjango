@@ -1,0 +1,21 @@
+{% extends "recipesapp/base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>Привет, {{ username }}</p>
+    {% endif %}
+
+    <h3> Все доступные рецепты </h3>
+
+    <ul>
+    {% for recipe in latest_recipes %}
+            <a href="{% url 'recipe_show' pk=recipe.pk %}">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="50" height="50">
+                {{ recipe }}
+            </a>
+            <br>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

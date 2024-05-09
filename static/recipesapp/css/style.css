@@ -1,0 +1,45 @@
+html {
+    background: url(../../../media/images/fon.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.body {
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   overflow: hidden;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #165ad7;
+    padding: 10px 0;
+    font-size: 110%;
+}
+
+.menu a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #c9cfe7;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+    background-color: lightblue;
+}
+
+.content {
+    flex: 1;
+    background: rgba(228, 243, 221, 0.16);
+}
+
+.footer {
+    padding: 10px;
+    background-color: rgba(206, 215, 225, 0.25);
+    color: #e5cece;
+    text-align: center;
+
+}

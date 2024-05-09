@@ -1,0 +1,18 @@
+{% extends "recipesapp/base.html" %}
+
+{% block content %}
+
+    <form method="POST">
+    {% csrf_token %}
+    <label for="username">Логин:</label><br>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="password">Пароль:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <input type="submit" value="Войти">
+</form>
+
+<p><a href="{% url 'register' %}">Зарегистрироваться</a></p>
+
+{% endblock %}

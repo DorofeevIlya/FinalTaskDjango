@@ -1,0 +1,30 @@
+{% extends "recipesapp/base.html" %}
+
+{% block content %}
+
+    <h3> Поиск рецептов </h3>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit">Поиск</button>
+    </form>
+
+    {% if find_recipes %}
+        <h3> Результаты поиска </h3>
+
+
+
+        <ul>
+            {% for recipe in find_recipes %}
+            <li>
+                <a href="{% url 'recipe_show' pk=recipe.pk %}">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="50" height="50">
+                {{ recipe }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "recipesapp/base.html" %}
+
+{% block content %}
+    <h1>Куропатка.ру</h1>
+    <h2>У нас на сайте вы найдете блюдо для любого повода. Добро пожаловать!</h2>
+    {% if user.is_authenticated %}
+        <p>Привет, {{ username }} !</p>
+    {% endif %}
+
+    <h3> Недавние записи </h3>
+
+    <ul>
+    {% for recipe in latest_recipes %}
+        <li>
+            <a href="{% url 'recipe_show' pk=recipe.pk %}">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="50" height="50">
+                {{ recipe }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

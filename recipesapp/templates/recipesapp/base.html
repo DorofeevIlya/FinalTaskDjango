@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <link rel="stylesheet" href="../../../static/recipesapp/css/style.css" color="red">
+    <title>{% block title %} {{ title }} {% endblock %}</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div class="header_menu">
+      <a href="{% url 'main_page' %}" class="menu">Главная</a>
+      <a href="{% url 'recipe_all' %}" class="menu">Все рецепты</a>
+      <a href="{% url 'recipe_search' %}">Поиск рецепта</a>
+      <a href="{% url 'recipe_add' %}">Добавить рецепт</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">Выход</a>
+      {% else %}
+      <a href="{% url 'login' %}">Авторизация</a>
+      {% endif %}
+    </div>
+    <div class="content">
+      {% block content %}
+      <p>Тут пока ничего нет</p>
+      {% endblock %} {% if messages %} {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %} {% endif %}
+    </div>
+
+    <div class="footer">
+      <p>Дорофеев Илья, 2024</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "recipesapp/base.html" %}
+
+{% block content %}
+
+    <style>
+    img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+    </style>
+
+    <h2>{{ recipe.name }} / {{ recipe.category }}</h2>
+    <p>{{ recipe.description }}</p>
+    <img src="{{ recipe.image.url }}" alt="Recipe Image"/>
+
+
+    <h4>Шаги приготовления:</h4>
+    <ul>
+        {% for step in cook_steps_list %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Ингредиенты:</h4>
+    <ul>
+        {% for ingredient in ingredients_list %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Сложность:</h4>
+    <ul>
+        {% for complexity in complexity_list %}
+            <li>{{ complexity }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>добавил {{ recipe.author }} {{ recipe.created_at }}</p>
+
+{% endblock %}
