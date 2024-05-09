@@ -33,7 +33,7 @@ CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = []
 
-INTERNAL_IPS = ['127.0.0.1', 'dorofey09.pythonanywhere.com']
+INTERNAL_IPS = ['127.0.0.1', 'ilyadorofeev.pythonanywhere.com']
 
 # Application definition
 
