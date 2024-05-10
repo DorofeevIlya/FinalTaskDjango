@@ -31,9 +31,11 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'dorofeev35.pythonanywhere.com',]
 
-INTERNAL_IPS = ['127.0.0.1', 'ilyadorofeev.pythonanywhere.com']
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipesapp',
+    'debug_toolbar',
 ]
 
 LOGGING = {
@@ -71,10 +74,10 @@ LOGGING = {
         },
     },
 }
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,7 +111,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'list_recipes.wsgi.application'
+# WSGI_APPLICATION = 'list_recipes.wsgi.application'
 
 
 # Database
@@ -117,15 +120,21 @@ WSGI_APPLICATION = 'list_recipes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ilyadorofeev$default',
-        'USER': 'ilyadorofeev',
+        'NAME': 'dorofeev35$default',
+        'USER': 'dorofeev35',
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': 'ilyadorofeev.mysql.pythonanywhere-services.com',
+        'HOST': 'dorofeev35.mysql.pythonanywhere-services.com',
         'OPTIONS': {
             'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'", 'charset': 'utf8mb4',
         },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -150,19 +159,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR /'recipesapp/static'
+    BASE_DIR / "recipesapp/static",
 ]
+STATIC_ROOT = BASE_DIR / 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

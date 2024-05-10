@@ -13,4 +13,4 @@ urlpatterns = [
     path('recipe_show/<int:pk>', views.recipe_show, name='recipe_show'),
     path('recipes_all', views.all_recipes, name='recipe_all'),
     path('recipe_search/', views.recipe_search, name='recipe_search'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
